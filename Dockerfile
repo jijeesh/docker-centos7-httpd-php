@@ -56,8 +56,22 @@ Require all granted \n\
 </VirtualHost>\n" \
  > /etc/httpd/sites-available/${cname}_$servn.conf
 RUN ln -s /etc/httpd/sites-available/${cname}_$servn.conf /etc/httpd/sites-enabled/${cname}_$servn.conf
+########################################################
+#### PHP configuration ##########
 
+RUN cp /etc/php.ini /etc/php.ini.orginal
+RUN mkdir -p /data/php/log/
+RUN mkdir -p /data/php/session/
+RUN mkdir -p /data/php/tmp/
 
+# -----------------------------------------------------------------------------
+# Securisation for PHP
+# -----------------------------------------------------------------------------
+RUN sed -i \
+	-e 's/^expose_php = .*/expose_php = Off/' \
+	-e 's/^memory_limit = .*/memory_limit = 512M' \
+	-e 's/^max_execution_time = .*/max_execution_time = 30/' \
+	/etc/php.ini
 
 EXPOSE 80
 
