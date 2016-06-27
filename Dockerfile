@@ -70,7 +70,7 @@ RUN mkdir -p /data/php/tmp/
 # -----------------------------------------------------------------------------
 RUN sed -i \
 	-e 's/^expose_php = .*/expose_php = Off/' \
-	-e 's/^memory_limit = .*/memory_limit = 512M' \
+	-e 's/^memory_limit = .*/memory_limit = 512M/' \
 	-e 's/^max_execution_time = .*/max_execution_time = 30/' \
 	/etc/php.ini
 
