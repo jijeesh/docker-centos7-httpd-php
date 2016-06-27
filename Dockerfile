@@ -72,6 +72,17 @@ RUN sed -i \
 	-e 's/^expose_php = .*/expose_php = Off/' \
 	-e 's/^memory_limit = .*/memory_limit = 512M/' \
 	-e 's/^max_execution_time = .*/max_execution_time = 30/' \
+	-e 's#^;error_log = syslog#;error_log = syslog\nerror_log = /data/php/log/scripts-error.log#' \
+	-e 's/^file_uploads = .*/file_uploads = On/' \
+	-e 's/^upload_max_filesize = .*/upload_max_filesize = 2M/' \
+	-e 's/^allow_url_fopen = .*/allow_url_fopen = Off/' \
+	-e 's/^allow_url_include = .*/allow_url_include  = Off/' \
+	-e 's/^sql.safe_mode = .*/sql.safe_mode = On/' \
+	-e 's/^post_max_size = .*/post_max_size = 5K/' \
+	-e 's/^session.name = .*/session.name = PSID/' \
+	-e 's#^;session.save_path = .*#session.save_path = /data/php/session#' \
+	-e 's/^session.cookie_httponly.*/session.cookie_httponly = On/' \
+	-e 's#^;upload_tmp_dir.*#upload_tmp_dir = /data/php/tmp#' \
 	/etc/php.ini
 
 EXPOSE 80
