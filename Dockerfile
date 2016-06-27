@@ -8,6 +8,7 @@ ENV user apache
 ENV listen *
 #Virtual hosting
 RUN yum install -y httpd
+RUN yum install -y --skip-broken php php-devel php-mysqlnd php-common php-pdo php-mbstring php-xml
 RUN mkdir -p $dir${cname}_$servn
 RUN chown -R ${user}:${user}  $dir${cname}_$servn
 RUN chmod -R 755  $dir${cname}_$servn
