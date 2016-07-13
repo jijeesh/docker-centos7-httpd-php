@@ -6,3 +6,4 @@ docker run -d -v /projects/webroot:/var/www/www_example.com/public_html -v /proj
 
 /projects/webroot is a your local path web root directory
 /project/phptmp is a php log, tmp and session directory 
+
