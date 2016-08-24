@@ -83,6 +83,7 @@ RUN sed -i \
 	-e 's#^;session.save_path = .*#session.save_path = /data/php/session#' \
 	-e 's/^session.cookie_httponly.*/session.cookie_httponly = On/' \
 	-e 's#^;upload_tmp_dir.*#upload_tmp_dir = /data/php/tmp#' \
+	-e 's#^;date.timezone.*#date.timezone = \"Asia\/Kolkata\"#' \
 	/etc/php.ini
 
 EXPOSE 80
