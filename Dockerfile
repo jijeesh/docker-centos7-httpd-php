@@ -9,6 +9,8 @@ ENV listen *
 #Virtual hosting
 RUN yum install -y httpd
 RUN yum install -y --skip-broken php php-devel php-mysqlnd php-common php-pdo php-mbstring php-xml
+ENV TZ=Asia/Tokyo
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 RUN mkdir -p $dir${cname}_$servn
 RUN chown -R ${user}:${user}  $dir${cname}_$servn
 RUN chmod -R 755  $dir${cname}_$servn
@@ -83,7 +85,7 @@ RUN sed -i \
 	-e 's#^;session.save_path = .*#session.save_path = /data/php/session#' \
 	-e 's/^session.cookie_httponly.*/session.cookie_httponly = On/' \
 	-e 's#^;upload_tmp_dir.*#upload_tmp_dir = /data/php/tmp#' \
-	-e 's#^;date.timezone.*#date.timezone = \"Asia\/Kolkata\"#' \
+	-e 's#^;date.timezone.*#date.timezone = \"Asia\/Tokyo\"#' \
 	/etc/php.ini
 
 EXPOSE 80
