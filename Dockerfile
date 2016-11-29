@@ -86,6 +86,10 @@ RUN sed -i \
 	-e 's/^session.cookie_httponly.*/session.cookie_httponly = On/' \
 	-e 's#^;upload_tmp_dir.*#upload_tmp_dir = /data/php/tmp#' \
 	-e 's#^;date.timezone.*#date.timezone = \"Asia\/Tokyo\"#' \
+	-e 's#^;mbstring.language.*#mbstring.language = Neutral , English , Japanese#' \
+        -e 's#^;mbstring.internal_encoding.*#mbstring.internal_encoding = UTF-8#' \
+        -e 's#^;mbstring.http_input.*#mbstring.http_input = pass , UTF-8, SJIS, EUC-JP#' \
+        -e 's#^;mbstring.http_output.*#mbstring.http_output = SJIS , UTF-8#' \
 	/etc/php.ini
 
 EXPOSE 80
