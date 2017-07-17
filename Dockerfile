@@ -1,6 +1,6 @@
 FROM centos:latest
 MAINTAINER Jijeesh <silentheartbeat@gmail.com>
-#DOMAIN INFORMATION
+#DOMAIN INFORMATION for example.com
 ENV servn example.com
 ENV cname www
 ENV dir /var/www/
