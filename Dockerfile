@@ -92,5 +92,8 @@ RUN sed -i \
 EXPOSE 80
 EXPOSE 443
 
-RUN rm -rf /run/httpd/* /tmp/httpd*
-CMD ["/usr/sbin/apachectl", "-D", "FOREGROUND"]
+#RUN rm -rf /run/httpd/* /tmp/httpd*
+#CMD ["/usr/sbin/apachectl", "-D", "FOREGROUND"]
+ADD run-httpd.sh /run-httpd.sh
+RUN chmod -v +x /run-httpd.sh
+CMD ["/run-httpd.sh"]
